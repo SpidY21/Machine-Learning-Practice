@@ -21,4 +21,5 @@ rg.fit(X_train, y_train)
 
 plt.scatter(y_test, rg.predict(X_test), color='r')
 # plt.plot(X_test, rg.predict(X_test), color='b')
+
 plt.show()

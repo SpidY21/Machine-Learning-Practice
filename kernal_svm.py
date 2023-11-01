@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 dataset = pd.read_csv(r"C:\Users\Yash\Desktop\EXCELR\ML Udemy\Social_Network_Ads.csv")
@@ -16,11 +16,11 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-knn = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
+classifier = SVC(kernel='rbf', random_state=0)
+classifier.fit(X_train, y_train)
 
-knn.fit(X_train, y_train)
-print(knn.predict(sc.transform([[30, 87000]])))
-y_pred = knn.predict(X_test)
+print(classifier.predict(sc.transform([[30, 87000]])))
+y_pred = classifier.predict(X_test)
 print(y_pred)
 
 cm = confusion_matrix(y_test, y_pred)

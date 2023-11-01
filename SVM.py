@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
+from sklearn.metrics import confusion_matrix, accuracy_score
 
 dataset = pd.read_csv(r"C:\Users\Yash\Desktop\EXCELR\ML Udemy\Social_Network_Ads.csv")
 
@@ -21,3 +22,7 @@ classifier.fit(X_train, y_train)
 print(classifier.predict(sc.transform([[30, 87000]])))
 y_pred = classifier.predict(X_test)
 print(y_pred)
+
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+accuracy_score(y_test, y_pred)
